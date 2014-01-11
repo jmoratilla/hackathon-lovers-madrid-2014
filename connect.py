@@ -1,7 +1,7 @@
 __author__ = 'jorge'
 
 import requests
-
+import time
 
 
 class Configuration(object):
@@ -23,6 +23,13 @@ class Configuration(object):
 
     #auth_params = { 'CSRFPreventionToken': csrf_prevention_token, 'cookie': cookie}
 
-    response = requests.get(url + '/nodes/'+nodename+'/status', cookies=cookies,verify=False)
+    time_array = []
+    samples = 10
+    interval = 1
+    for i in range(samples):
+        response = requests.get(url + '/nodes/'+nodename+'/openvz/102/status/current', cookies=cookies,verify=False)
+        data = response.json()
+        time_array.append(data['data']['cpu'])
+        time.sleep(interval)
 
-    print response.json()
+    print time_array
