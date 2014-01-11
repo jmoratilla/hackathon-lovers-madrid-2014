@@ -24,7 +24,7 @@ print 'cookie: ',cookies
 
 time_array = []
 x_dim = []
-samples = 600
+samples = 60
 interval = 0.5
 
 vm_info=[]
@@ -52,15 +52,15 @@ for i in range(samples):
 
 x_dim = [e*interval for e in x_dim]
 
-line1 = {'x':x_dim,'y':host_info,"type":"line", "name":"Experiment",
+line1 = {'x':x_dim,'y':host_info,"type":"scatter", "name":"host",
          "line":{"color":"rgb(3,78,123)", "width":6, "dash":"dot"},
          "marker":{"opacity":1.0,"symbol":"square", "size":12,"color":"rgb(54,144,192)",
                    "line":{"width":3, "color":"darkblue"}}}
 
-line2 = {'x':x_dim,'y':vm_info,"type":"line", "name":"Experiment",
-         "line":{"color":"rgb(3,78,123)", "width":6, "dash":"dot"},
+line2 = {'x':x_dim,'y':vm_info,"type":"scatter", "name":"vm1",
+         "line":{"color":"rgb(123,78,3)", "width":6, "dash":"dot"},
          "marker":{"opacity":1.0,"symbol":"square", "size":12,"color":"rgb(54,144,192)",
                    "line":{"width":3, "color":"darkred"}}}
 
 # plot the line
-py.plot([line1])
+py.plot([line1,line2])
